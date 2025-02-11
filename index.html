@@ -242,12 +242,70 @@
         <div class="container">
             <h1>Hey Reign 🌸</h1>
             <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
-                I have something important to ask you...
+                I made this website just for you!
             </p>
             <div class="gif-container">
                 <div class="tenor-gif-embed" data-postid="4335111926176576138" data-share-method="host" data-aspect-ratio="0.855422" data-width="100%"></div>
             </div>
-            <button class="button" id="revealButton">What is it? 😳</button>
+            <button class="button" id="revealButton">What is this about? </button>
+        </div>
+    </div>
+    
+     <!-- Compliment Page -->
+    <div class="page" id="complimentPage">
+        <div class="container">
+            <h1>But first, let me tell you.. </h1>
+            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
+                You make my day a little brighter every day.
+            </p>
+            <div class="gif-container">
+                <div class="tenor-gif-embed" data-postid="1234567890" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
+            </div>
+            <button class="button" id="nextButton1">Next </button>
+        </div>
+    </div>
+    
+    <!-- Memory Page -->
+    <div class="page" id="memoryPage">
+        <div class="container">
+            <h1>Remember This? 🌸</h1>
+            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
+                That time we first met on your birthday was one of the best days of my life!
+            </p>
+            <div class="gif-container">
+                <div class="tenor-gif-embed" data-postid="0987654321" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
+            </div>
+            <button class="button" id="nextButton2">Next</button>
+        </div>
+    </div>
+
+    <!-- Countdown Page -->
+    <div class="page" id="countdownPage">
+        <div class="container">
+            <h1>Now get Ready... </h1>
+            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
+                Something special is coming in...
+            </p>
+            <div id="countdown" style="font-size: 2rem; color: var(--primary); margin: 2rem 0;">
+                3
+            </div>
+            <div class="gif-container">
+                <div class="tenor-gif-embed" data-postid="1122334455" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Tease Page -->
+    <div class="page" id="finalTeasePage">
+        <div class="container">
+            <h1>One Last Thing... </h1>
+            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
+                I have a very important question for you...
+            </p>
+            <div class="gif-container">
+                <div class="tenor-gif-embed" data-postid="5566778899" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
+            </div>
+            <button class="button" id="nextButton3">What is it? 😳</button>
         </div>
     </div>
 
@@ -264,9 +322,6 @@
             </div>
             <p id="responseMessage" class="hidden" style="font-size: 1.5rem; color: var(--primary); margin-top: 1.5rem;">
                 Yay! 💖<br>
-                <small style="font-size: 1rem; display: block; margin-top: 10px;">
-                    Let's make purr-fect memories! 🐾
-                </small>
             </p>
         </div>
     </div>
@@ -286,15 +341,45 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const revealButton = document.getElementById('revealButton');
-            const landingPage = document.getElementById('landingPage');
-            const questionPage = document.getElementById('questionPage');
-            const yesButton = document.getElementById('yesButton');
-            const noButton = document.getElementById('noButton');
-            const responseMessage = document.getElementById('responseMessage');
-            const noPage = document.getElementById('noPage');
-            const questionGif = document.getElementById('questionGif');
-            
+    const revealButton = document.getElementById('revealButton');
+    const landingPage = document.getElementById('landingPage');
+    const complimentPage = document.getElementById('complimentPage');
+    const memoryPage = document.getElementById('memoryPage');
+    const countdownPage = document.getElementById('countdownPage');
+    const finalTeasePage = document.getElementById('finalTeasePage');
+    const questionPage = document.getElementById('questionPage');
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+    const responseMessage = document.getElementById('responseMessage');
+    const noPage = document.getElementById('noPage');
+    const questionGif = document.getElementById('questionGif');
+    
+    const nextButton1 = document.getElementById('nextButton1');
+    const nextButton2 = document.getElementById('nextButton2');
+    const nextButton3 = document.getElementById('nextButton3');
+    
+    const loadTenorScript = () => {
+        const script = document.createElement('script');
+        script.src = "https://tenor.com/embed.js";
+        document.body.appendChild(script);
+    };
+
+    revealButton.addEventListener('click', () => switchPage(landingPage, complimentPage));
+    nextButton1.addEventListener('click', () => switchPage(complimentPage, memoryPage));
+    nextButton2.addEventListener('click', () => switchPage(memoryPage, countdownPage));
+    nextButton3.addEventListener('click', () => switchPage(finalTeasePage, questionPage));
+
+    // Countdown logic
+    let countdown = 3;
+    const countdownElement = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+        countdown--;
+        countdownElement.textContent = countdown;
+        if (countdown === 0) {
+            clearInterval(countdownInterval);
+            switchPage(countdownPage, finalTeasePage);
+        }
+    }, 1000);
             const loadTenorScript = () => {
                 const script = document.createElement('script');
                 script.src = "https://tenor.com/embed.js";
