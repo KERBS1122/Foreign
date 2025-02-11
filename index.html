@@ -250,60 +250,13 @@
             <button class="button" id="revealButton">What is this about? </button>
         </div>
     </div>
-    
-     <!-- Compliment Page -->
-    <div class="page" id="complimentPage">
-        <div class="container">
-            <h1>But first, let me tell you.. </h1>
-            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
-                You make my day a little brighter every day.
-            </p>
-            <div class="gif-container">
-                <div class="tenor-gif-embed" data-postid="1234567890" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
-            </div>
-            <button class="button" id="nextButton1">Next </button>
-        </div>
-    </div>
-    
-    <!-- Memory Page -->
-    <div class="page" id="memoryPage">
-        <div class="container">
-            <h1>Remember This? 🌸</h1>
-            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
-                That time we first met on your birthday was one of the best days of my life!
-            </p>
-            <div class="gif-container">
-                <div class="tenor-gif-embed" data-postid="0987654321" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
-            </div>
-            <button class="button" id="nextButton2">Next</button>
-        </div>
-    </div>
-
-    <!-- Countdown Page -->
-    <div class="page" id="countdownPage">
-        <div class="container">
-            <h1>Now get Ready... </h1>
-            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
-                Something special is coming in...
-            </p>
-            <div id="countdown" style="font-size: 2rem; color: var(--primary); margin: 2rem 0;">
-                3
-            </div>
-            <div class="gif-container">
-                <div class="tenor-gif-embed" data-postid="1122334455" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
-            </div>
-        </div>
-    </div>
 
     <!-- Final Tease Page -->
     <div class="page" id="finalTeasePage">
         <div class="container">
-            <h1>One Last Thing... </h1>
-            <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">
-                I have a very important question for you...
-            </p>
+            <h1>Well, I just have a very important question for you. 😳 </h1>
             <div class="gif-container">
-                <div class="tenor-gif-embed" data-postid="5566778899" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
+                <div class="tenor-gif-embed" data-postid="13089277994966620563" data-share-method="host" data-aspect-ratio="1.0" data-width="100%"></div>
             </div>
             <button class="button" id="nextButton3">What is it? 😳</button>
         </div>
@@ -341,51 +294,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const revealButton = document.getElementById('revealButton');
-    const landingPage = document.getElementById('landingPage');
-    const complimentPage = document.getElementById('complimentPage');
-    const memoryPage = document.getElementById('memoryPage');
-    const countdownPage = document.getElementById('countdownPage');
-    const finalTeasePage = document.getElementById('finalTeasePage');
-    const questionPage = document.getElementById('questionPage');
-    const yesButton = document.getElementById('yesButton');
-    const noButton = document.getElementById('noButton');
-    const responseMessage = document.getElementById('responseMessage');
-    const noPage = document.getElementById('noPage');
-    const questionGif = document.getElementById('questionGif');
-    
-    const nextButton1 = document.getElementById('nextButton1');
-    const nextButton2 = document.getElementById('nextButton2');
-    const nextButton3 = document.getElementById('nextButton3');
-    
-    const loadTenorScript = () => {
-        const script = document.createElement('script');
-        script.src = "https://tenor.com/embed.js";
-        document.body.appendChild(script);
-    };
-
-    revealButton.addEventListener('click', () => switchPage(landingPage, complimentPage));
-    nextButton1.addEventListener('click', () => switchPage(complimentPage, memoryPage));
-    nextButton2.addEventListener('click', () => switchPage(memoryPage, countdownPage));
-    nextButton3.addEventListener('click', () => switchPage(finalTeasePage, questionPage));
-
-    // Countdown logic
-    let countdown = 3;
-    const countdownElement = document.getElementById('countdown');
-    const countdownInterval = setInterval(() => {
-        countdown--;
-        countdownElement.textContent = countdown;
-        if (countdown === 0) {
-            clearInterval(countdownInterval);
-            switchPage(countdownPage, finalTeasePage);
-        }
-    }, 1000);
+            const revealButton = document.getElementById('revealButton');
+            const landingPage = document.getElementById('landingPage');
+            const finalTeasePage = document.getElementById('finalTeasePage');
+            const questionPage = document.getElementById('questionPage');
+            const yesButton = document.getElementById('yesButton');
+            const noButton = document.getElementById('noButton');
+            const responseMessage = document.getElementById('responseMessage');
+            const noPage = document.getElementById('noPage');
+            const questionGif = document.getElementById('questionGif');
+            const nextButton3 = document.getElementById('nextButton3');
+            
             const loadTenorScript = () => {
                 const script = document.createElement('script');
                 script.src = "https://tenor.com/embed.js";
                 document.body.appendChild(script);
             };
 
+            // Page navigation setup
+            revealButton.addEventListener('click', () => switchPage(landingPage, finalTeasePage));
+            nextButton3.addEventListener('click', () => switchPage(finalTeasePage, questionPage));
+
+            // Yes button functionality
             yesButton.addEventListener('click', function() {
                 createConfetti();
                 
@@ -393,7 +323,6 @@
                 questionText.innerHTML = 'Yippie! You Said Yes!🎉💖';
                 questionText.style.color = '#ff6b6b';
                 questionText.style.fontSize = '2.5rem';
-
 
                 responseMessage.innerHTML = `
                     <div class="celebration-text"> Thank you! 🌸</div>
@@ -413,6 +342,7 @@
                 yesButton.classList.add('hidden');
                 noButton.classList.add('hidden');
 
+                // Add floating emojis
                 const emojis = ['🌸', '💖', '🎉', '😻', '✨'];
                 for(let i = 0; i < 20; i++) {
                     const emoji = document.createElement('div');
@@ -426,6 +356,7 @@
                 loadTenorScript();
             });
 
+            // Page switching function
             function switchPage(outPage, inPage) {
                 outPage.classList.remove('active');
                 setTimeout(() => {
@@ -434,69 +365,7 @@
                 }, 500);
             }
 
-            function createHearts() {
-            const hearts = ['❤️', '💖', '💝', '💗', '💓', '💕'];
-            const container = document.getElementById('heartsContainer');
-            container.innerHTML = ''; 
-            
-            for(let i = 0; i < 20; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'floating-heart';
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.top = `${Math.random() * 100}%`;
-                heart.style.animationDelay = `${Math.random() * 3}s`;
-                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-                container.appendChild(heart);
-            }
-        }
-
-            function createConfetti() {
-                const colors = ['#ff3b3b', '#6da2e0', '#ff94c2', '#ffd700', '#7cfc00'];
-                const confettiCount = 150;
-
-                for(let i = 0; i < confettiCount; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.animationDelay = Math.random() * 1.5 + 's';
-                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '30% 70% 70% 30% / 30% 30% 70% 70%';
-                    
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 2500);
-                }
-            }
-
-            revealButton.addEventListener('click', () => switchPage(landingPage, questionPage));
-            
-            yesButton.addEventListener('click', function() {
-                createConfetti();
-                
-                for(let i = 0; i < 50; i++) {
-                    const heart = document.createElement('div');
-                    heart.style.cssText = `
-                        position: fixed;
-                        left: ${Math.random() * 100}%;
-                        top: ${Math.random() * 100}%;
-                        font-size: ${Math.random() * 20 + 10}px;
-                        opacity: 0;
-                        animation: heartExplode 1s ease-out;
-                    `;
-                    heart.innerHTML = '❤️';
-                    document.body.appendChild(heart);
-                }
-
-                questionGif.innerHTML = `
-                    <div class="tenor-gif-embed" data-postid="6540808372197226742" data-share-method="host" data-aspect-ratio="1.05376" data-width="100%"></div>
-                `;
-                loadTenorScript();
-
-                responseMessage.classList.remove('hidden');
-                yesButton.classList.add('hidden');
-                noButton.classList.add('hidden');
-            });
-
+            // No button functionality
             const noTexts = ["Aray😾", "Sure na 'yan?", "Please?:<", "Think about it!!", "Ouch:<<", "Last chance!", "Fine", "I'll stop asking na.."];
             const sadCatGifs = ["11200514925795091536", "19635695", "14686660564512924072", "21300316", "22933249", "13240550249247957481", "20148993", "26415220", "4278547715558180765"];
             let clickCount = 0;
@@ -521,22 +390,59 @@
                 }
             });
 
+            // Initial setup
             createHearts();
             loadTenorScript();
+
+            function createHearts() {
+                const hearts = ['❤️', '💖', '💝', '💗', '💓', '💕'];
+                const container = document.getElementById('heartsContainer');
+                container.innerHTML = ''; 
+                
+                for(let i = 0; i < 20; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.top = `${Math.random() * 100}%`;
+                    heart.style.animationDelay = `${Math.random() * 3}s`;
+                    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                    container.appendChild(heart);
+                }
+            }
+
+            function createConfetti() {
+                const colors = ['#ff3b3b', '#6da2e0', '#ff94c2', '#ffd700', '#7cfc00'];
+                const confettiCount = 150;
+
+                for(let i = 0; i < confettiCount; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 1.5 + 's';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '30% 70% 70% 30% / 30% 30% 70% 70%';
+                    
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 2500);
+                }
+            }
         });
+
+        // Mouse sparkle effect
         document.addEventListener('mousemove', function(e) {
-        if (Math.random() > 0.8) { 
-        const heart = document.createElement('div');
-        heart.className = 'sparkle';
-        heart.innerHTML = '❤️';
-        heart.style.left = (e.pageX - 10) + 'px';
-        heart.style.top = (e.pageY - 10) + 'px';
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 1000);
-        }
+            if (Math.random() > 0.8) { 
+                const heart = document.createElement('div');
+                heart.className = 'sparkle';
+                heart.innerHTML = '❤️';
+                heart.style.left = (e.pageX - 10) + 'px';
+                heart.style.top = (e.pageY - 10) + 'px';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
         });
     </script>
 </body>
